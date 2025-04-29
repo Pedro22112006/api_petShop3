@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos - Pet Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Produtos do Pet Shop</h1>
+        <a href="/" class="btn">Voltar</a>
+    </header>
+
+    <main>
+        <div class="products-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.product_photo }}" alt="{{ product.product_name }}">
+                <h3>{{ product.product_name }}</h3>
+                <p>{{ product.product_description }}</p>
+                <p class="price">R$ {{ "%.2f"|format(product.product_price) }}</p>
+                <p>Estoque: {{ product.stock_quantity }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        <p>Escola Dev - Lista de Produtos</p>
+    </footer>
+</body>
+</html>
